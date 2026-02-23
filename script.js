@@ -1,6 +1,4 @@
 
-
-
 let rejectedList = [];
 let interviewList = [];
 
@@ -14,6 +12,25 @@ const interviewFilterBtn = document.getElementById('interview-filter-btn');
 
 const allCardsSection = document.getElementById('allCards');
 const mainContainer = document.querySelector('main');
+
+function toggleStyle(id) {
+        allFilterBtn.classList.add('bg-[#3B82F6]','text-white')
+    rejectedFilterBtn.classList.add('bg-[#3B82F6]','text-black')
+    interviewFilterBtn.classList.add('bg-[#3B82F6]','text-black')
+
+        
+    allFilterBtn.classList.remove('bg-[#3B82F6]','text-white')
+    rejectedFilterBtn.classList.remove('bg-[#3B82F6]')
+    interviewFilterBtn.classList.remove('bg-[#3B82F6]')
+
+    const selected = document.getElementById(id)
+    selected.classList.remove('bg-[#ffffff]','text-white')
+    selected.classList.add('bg-[#3B82F6]','white')
+
+    if (id === 'all-filter-btn') filterJobs('all');
+    if (id === 'interview-filter-btn') filterJobs('interview');
+    if (id === 'rejected-filter-btn') filterJobs('rejected');
+}
 
 function calculateCount() {
     total.innerText = allCardsSection.children.length;
@@ -46,20 +63,7 @@ function filterJobs(type) {
     document.querySelector('main p').innerText = `${visibleCount} Jobs`;
 }
 
-function toggleStyle(id) {
-    const buttons = [allFilterBtn, rejectedFilterBtn, interviewFilterBtn];
-    buttons.forEach(btn => {
-        btn.classList.remove('bg-[#3B82F6]', 'text-white');
-        btn.classList.add('bg-[#ffffff]');
-    });
 
-    const selected = document.getElementById(id);
-    selected.classList.add('bg-[#3B82F6]', 'text-white');
-
-    if (id === 'all-filter-btn') filterJobs('all');
-    if (id === 'interview-filter-btn') filterJobs('interview');
-    if (id === 'rejected-filter-btn') filterJobs('rejected');
-}
 
 mainContainer.addEventListener('click', (e) => {
     const target = e.target;
@@ -76,7 +80,7 @@ mainContainer.addEventListener('click', (e) => {
             rejectedList = rejectedList.filter(id => id !== cardId);
             
             statusBtn.innerText = "Interviewing";
-            statusBtn.className = "bg-green-100 text-green-600 w-[113px] font-bold";
+            statusBtn.className = "bg-green-100 text-green-600 w-[113px] font-bold py-1 px-2 rounded";
         }
     }
 
@@ -86,7 +90,7 @@ mainContainer.addEventListener('click', (e) => {
             interviewList = interviewList.filter(id => id !== cardId);
             
             statusBtn.innerText = "Rejected";
-            statusBtn.className = "bg-red-100 text-red-600 w-[113px] font-bold";
+            statusBtn.className = "bg-red-100 text-red-600 w-[113px] font-bold py-1 px-2 rounded";
         }
     }
 
@@ -98,12 +102,3 @@ mainContainer.addEventListener('click', (e) => {
 
     calculateCount();
 });
-
-
-
-
-
-
-
-
-

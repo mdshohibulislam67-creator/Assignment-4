@@ -41,9 +41,9 @@
 
 
         <div class="gap-4 pb-3">
-            <button class="all-job h-[32px] w-[80px] bg-[#3B82F6] text-white">All</button>
-            <button class="interview h-[32px] w-[80px] bg-[#ffffff]">Interview</button>
-            <button class="rejected h-[32px] w-[80px] bg-[#ffffff]">Rejected</button>
+            <button onclick="toggleStyle('all-filter-btn')" class="all-job h-[32px] w-[80px] bg-[#3B82F6] text-white" id="all-filter-btn">All</button>
+            <button onclick="toggleStyle('interview-filter-btn')" class="interview h-[32px] w-[80px] bg-[#ffffff]" id="interview-filter-btn">Interview</button>
+            <button onclick="toggleStyle('rejected-filter-btn')" class="rejected h-[32px] w-[80px] bg-[#ffffff]" id="rejected-filter-btn">Rejected</button>
         </div>
 
         <section id="allCards" class="flex flex-col gap-6 pb-10">
